@@ -10,4 +10,5 @@ select
     created as created_at,
     _batched_at as batched_at
     
-from raw.stripe.payment
+from {{ source('stripe', 'payment') }}
+
