@@ -4,7 +4,19 @@ models:
   - name: stg_payments
     columns: 
       - name: order_id
+        description: Order id referred to 'orders'.
         tests:
           - relationships:
               to: ref('orders')
               field: id
+      - name: payment_id
+        description: Primary key for stg_payments.
+      - name: amount
+        description: Total value of payment is US dollars.
+      - name: created_at
+        description: Payment date.
+      - name: status
+        description: Status of payment.
+        tests:
+          - accepted_values: 
+              values: ['success', 'fail']
